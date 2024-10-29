@@ -5,8 +5,8 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 COPY . /app
 
-# 3. Java 파일 컴파일 (Server.java의 경우)
-RUN javac Server.java
+# 3. Java 파일 컴파일
+RUN javac ./src/Main.java
 
 # 4. 컨테이너 시작 시 실행할 명령어
 CMD ["java", "Server"]
