@@ -11,6 +11,7 @@ public class Main
     {
         try (ServerSocket serverSocket = new ServerSocket(1234))
         {
+            
             while (true)
             {
                 Socket socket = serverSocket.accept();
