@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . /app
 
 # Java 파일 컴파일
-RUN javac src/Main.java
+RUN javac /app/src/Main.java
 
 # 컨테이너 시작 시 실행할 명령어
 CMD ["java", "-cp", "/app/src", "Main"]
