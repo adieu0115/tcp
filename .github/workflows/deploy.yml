@@ -46,8 +46,6 @@ jobs:
           EC2_USER: ${{ secrets.EC2_USER }}
         run: |
           ssh $EC2_USER@$EC2_HOST << 'EOF'
-#            echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
             docker pull ${DOCKER_USERNAME}/my-tcp-server:latest
-#            docker stop $(docker ps -q --filter ancestor=${DOCKER_USERNAME}/my-tcp-server:latest) || true
             docker run -d -p 1234:1234 ${DOCKER_USERNAME}/my-tcp-server:latest
           EOF
