@@ -9,4 +9,4 @@ COPY . /app
 RUN javac ./src/Main.java
 
 # 4. 컨테이너 시작 시 실행할 명령어
-CMD ["java", "Main"]
+CMD ["java", "-cp", "src", "Main"]

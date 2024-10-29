@@ -11,13 +11,14 @@ public class Main
     {
         try (ServerSocket serverSocket = new ServerSocket(1234))
         {
-            
+            System.out.println("hello");
             while (true)
             {
                 Socket socket = serverSocket.accept();
                 InputStream input = socket.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 String message = reader.readLine();
+                System.out.println(message);
                 socket.close();
             }
         }
