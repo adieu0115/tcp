@@ -9,7 +9,7 @@ public class TcpServer
 {
     // 0.반드시 cmd가 아닌, bash를 사용할 것.
     // 1.echo "hello world" | ncat localhost 9090 명령어로 통신
-    // 2.echo "EXIT" | ncat localhost 9090 명령어로 종료
+    // 2.printf "EXIT" | ncat localhost 9090 명령어로 종료
     public void startServer()
     {
         ServerSocket server = null;
