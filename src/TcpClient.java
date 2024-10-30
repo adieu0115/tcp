@@ -4,11 +4,11 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Date;
 
-public class SocketClientSample
+public class TcpClient
 {
     public static void main(String[] args)
     {
-        SocketClientSample sample = new SocketClientSample();
+        TcpClient sample = new TcpClient();
         sample.sendSocketSample();
     }
 
