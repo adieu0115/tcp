@@ -9,23 +9,63 @@ public class Main
 {
     public static void main(String[] args)
     {
-        try (ServerSocket serverSocket = new ServerSocket(9090))
+        Main main = new Main();
+        main.startServer();
+    }
+
+    public void startServer()
+    {
+        ServerSocket server = null;
+        Socket client = null;
+
+        try
         {
-            System.out.println("hello");
+            server = new ServerSocket(9090);
             while (true)
             {
-                serverSocket.setSoTimeout(5000);
-                Socket socket = serverSocket.accept();
-                InputStream input = socket.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                String message = reader.readLine();
-                System.out.println(message);
-                socket.close();
+                System.out.println("Server:Waiting for request");
+
+                client = server.accept();
+                System.out.println("Server:Accepted.");
+
+                InputStream stream = client.getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(stream));
+                String data = null;
+
+                StringBuilder receivedData = new StringBuilder();
+                while ((data = in.readLine()) != null)
+                {
+                    receivedData.append(data);
+                }
+                System.out.println("Server: ReceivedData = " + receivedData);
+                in.close();
+                stream.close();
+                client.close();
+                if (receivedData != null && "EXIT".equals(receivedData.toString()))
+                {
+                    System.out.println("Stop SockerServer");
+                    break;
+                }
+                System.out.println("------------------");
             }
         }
         catch (IOException e)
         {
             e.printStackTrace();
+        }
+        finally
+        {
+            if (server != null)
+            {
+                try
+                {
+                    server.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
