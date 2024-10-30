@@ -14,6 +14,7 @@ public class Main
             System.out.println("hello");
             while (true)
             {
+                serverSocket.setSoTimeout(5000);
                 Socket socket = serverSocket.accept();
                 InputStream input = socket.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
