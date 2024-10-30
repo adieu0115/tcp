@@ -24,6 +24,7 @@ public class UdpServer
             {
                 System.out.println("Server:Waiting for request.");
                 server.receive(packet);
+                System.out.println("packet Test=" + packet);
                 int dataLength = packet.getLength();
                 System.out.println("Server:received. Data length=" + dataLength);
                 String data = new String(packet.getData(), 0, dataLength);
