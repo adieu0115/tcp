@@ -1,12 +1,11 @@
-# Java 환경을 위한 Docker 이미지를 선택
-FROM openjdk:11-jdk-slim
+FROM openjdk:11
 
-# 작업 디렉터리 설정 후 프로젝트 파일 복사
-WORKDIR /app
+# 프로젝트 루트 디렉토리를 /app으로 복사
 COPY . /app
 
-# Java 파일 컴파일
-RUN javac /app/src/Main.java
+# 소스 디렉토리로 이동해 컴파일
+WORKDIR /app/src
+RUN javac Main.java
 
-# 컨테이너 시작 시 실행할 명령어
-CMD ["java", "-cp", "/app/src", "Main"]
+# 애플리케이션 실행
+CMD ["java", "Main"]
