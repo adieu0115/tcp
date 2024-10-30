@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
 
 public class UdpServer
@@ -14,7 +15,7 @@ public class UdpServer
         DatagramSocket server = null;
         try
         {
-            server = new DatagramSocket(9090);
+            server = new DatagramSocket(9090, InetAddress.getByName("0.0.0.0"));
             int bufferLength = 256;
             byte[] buffer = new byte[bufferLength];
             DatagramPacket packet = new DatagramPacket(buffer, bufferLength);
