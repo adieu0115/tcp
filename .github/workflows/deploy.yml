@@ -32,4 +32,4 @@ jobs:
       - name: Run Docker container on EC2
         run: |
           ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_IP }} 'docker stop mytcp || true && docker rm mytcp || true'
-          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_IP }} 'docker run -d -p 9090:9090 --name mytcp mytcp:latest'
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_IP }} 'docker run -d -p 9090:9090/tcp -p 9090:9090/udp --name mytcp mytcp:latest'
